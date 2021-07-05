@@ -4,7 +4,7 @@ import Search from './Search';
 
 function App() {
   return (
-    <div className='w-5/6 m-auto grid gap-12'>
+    <div className='md:w-5/6 m-auto grid gap-12'>
       <Navigation/>
       <Search/>
     </div>
