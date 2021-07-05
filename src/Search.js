@@ -1,26 +1,27 @@
 import {React, useState} from 'react';
 import './Search.css'
-import Api from './Api';
+import VideoCard from './VideoCard';
 
 const Search = () => {
   const [query, setQuery] = useState('');
 
   const [videos, setVideos] = useState([]);
 
+
   const searchVideo = async (e) =>{
     e.preventDefault();
-    const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=${Api.KEY}`
+    const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=AIzaSyDKuMhhfJSuUW9P6_FvYaUFGVV12oKlOuk`
     
     try {
       const res = await fetch(url);
       const data = await res.json();
-      setVideos(data.results)
+      setVideos(data.items);
+      console.log(data.items);
     } catch (err) {
       console.log(err);
     }
   }
 
-  console.log(Api.KEY);
   return (
     <div className='m-auto'>
       <form onSubmit={searchVideo}>
@@ -37,6 +38,11 @@ const Search = () => {
         </button>
 
       </form>
+      <div>
+        {videos.filter(video=> video.snippet.description).map(video=> (
+          <VideoCard video={video}/>
+        ))}
+      </div>
 
     </div>
   );
