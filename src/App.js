@@ -1,10 +1,12 @@
-
 import './App.css';
+import Navigation from './Navigation';
+import Search from './Search';
 
 function App() {
   return (
-    <div className="App">
-      
+    <div className='w-5/6 m-auto grid gap-12'>
+      <Navigation/>
+      <Search/>
     </div>
   );
 }
