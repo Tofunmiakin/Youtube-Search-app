@@ -16,7 +16,6 @@ const Search = () => {
       const res = await fetch(url);
       const data = await res.json();
       setVideos(data.items);
-      console.log(data.items);
     } catch (err) {
       console.log(err);
     }
